@@ -1,0 +1,52 @@
+version: 2
+
+models:
+    - name: finance_process_control
+      columns:
+        - name: process_id
+          tests:
+            - not_null
+        - name: process_sub_id
+          tests:
+            - not_null
+        - name: process_type
+          tests:
+            - accepted_values:
+                values:
+                  - File
+                  - Payouts
+                  - Procedure
+                  - Special
+        - name: processor
+          tests:
+            - not_null
+        - name: process_frequency
+          tests:
+            - not_null
+            - accepted_values:
+                values:
+                  - Daily
+                  - Monthly
+                  - On Demand
+                  - Weekly
+        - name: pending_flag
+          tests:
+            - not_null
+            - accepted_values:
+                values:
+                  - 0
+                  - 1
+        - name: payout
+          tests:
+            - not_null
+            - accepted_values:
+                values:
+                  - "Yes"
+                  - "No"
+        - name: income_revenue_type
+          tests:
+            - not_null
+            - accepted_values:
+                values:
+                  - "Yes"
+                  - "No"
